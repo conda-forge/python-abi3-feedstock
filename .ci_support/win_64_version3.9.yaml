@@ -1,0 +1,11 @@
+channel_sources:
+- conda-forge
+channel_targets:
+- conda-forge main
+version:
+- '3.9'
+version_hex:
+- '0x03090000'
+zip_keys:
+- - version
+  - version_hex

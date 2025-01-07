@@ -1,0 +1,15 @@
+cdt_name:
+- conda
+channel_sources:
+- conda-forge
+channel_targets:
+- conda-forge main
+docker_image:
+- quay.io/condaforge/linux-anvil-x86_64:alma9
+version:
+- '3.11'
+version_hex:
+- '0x030b0000'
+zip_keys:
+- - version
+  - version_hex
