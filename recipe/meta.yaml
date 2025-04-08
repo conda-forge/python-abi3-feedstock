@@ -7,7 +7,7 @@ package:
   version: {{ version }}
 
 build:
-  number: 1
+  number: 2
 
 outputs:
   - name: python-abi3
@@ -15,7 +15,7 @@ outputs:
       noarch: generic
       run_exports:
         - _python_abi3_support 1.*
-        - python >={{ version }}
+        - cpython >={{ version }}
       script_env:
         - PY_LIMITED_API={{ version_hex }}
     requirements:
