@@ -33,7 +33,7 @@ test:
   commands:
     - pip check
     - abi3audit $SP_DIR/spam.abi3.so -s -v --assume-minimum-abi3 {{ python_min }}   # [unix]
-    - abi3audit %SP_DIR%/spam.dll -s -v --assume-minimum-abi3 {{ python_min }}       # [win]
+    - abi3audit %SP_DIR%/spam.pyd -s -v --assume-minimum-abi3 {{ python_min }}      # [win]
 
 about:
   home: https://github.com/joerick/python-abi3-package-sample
