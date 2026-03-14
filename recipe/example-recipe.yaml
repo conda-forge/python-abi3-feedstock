@@ -33,7 +33,8 @@ tests:
       imports:
         - spam
       python_version:
-        - ${{ python_min }}.*
+        - if: is_abi3
+          then: ${{ python_min }}.*
         - "*"
   - requirements:
       run:
