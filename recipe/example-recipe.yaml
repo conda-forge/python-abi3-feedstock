@@ -32,6 +32,9 @@ tests:
   - python:
       imports:
         - spam
+      python_version:
+        - ${{ python_min }}.*
+        - "*"
   - requirements:
       run:
         - pip
