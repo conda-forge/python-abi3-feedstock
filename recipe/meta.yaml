@@ -4,10 +4,10 @@
 
 package:
   name: python-abi3-split
-  version: {{ version }}
+  version: "{{ version }}"
 
 build:
-  number: 2
+  number: 3
 
 outputs:
   - name: python-abi3
@@ -33,7 +33,7 @@ outputs:
         - echo "hello world!"
 
   - name: _python_abi3_support
-    version: 1.0
+    version: "1.0"
     build:
       noarch: generic
     requirements:
