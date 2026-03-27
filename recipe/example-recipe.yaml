@@ -13,7 +13,7 @@ build:
   skip: is_abi3 and not is_python_min
   script: ${{ PYTHON }} -m pip install . -vv
   python:
-    version_independent: ${{ true if is_abi3 }}
+    version_independent: ${{ is_abi3 }}
 
 requirements:
   build:
