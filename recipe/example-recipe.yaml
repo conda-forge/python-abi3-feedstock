@@ -10,18 +10,17 @@ source:
 
 build:
   number: 0
-  skip: is_abi3 and not is_python_min
+  skip: not is_python_min
   script: ${{ PYTHON }} -m pip install . -vv
   python:
-    version_independent: ${{ is_abi3 }}
+    version_independent: true
 
 requirements:
   build:
     - ${{ compiler('c') }}
     - ${{ stdlib('c') }}
   host:
-    - if: is_abi3
-      then: python-abi3
+    - python-abi3
     - python
     - pip
     - setuptools
@@ -33,18 +32,15 @@ tests:
       imports:
         - spam
       python_version:
-        - if: is_abi3
-          then: ${{ python_min }}.*
+        - ${{ python_min }}.*
         - "*"
-  - if: is_abi3
-    then:
-      requirements:
-        run:
-          - abi3audit
-      script:
-        - if: unix
-          then: abi3audit $SP_DIR/spam.abi3.so -s -v --assume-minimum-abi3 ${{ python_min }}
-          else: abi3audit %SP_DIR%/spam.pyd -s -v --assume-minimum-abi3 ${{ python_min }}
+  - requirements:
+      run:
+        - abi3audit
+    script:
+      - if: unix
+        then: abi3audit $SP_DIR/spam.abi3.so -s -v --assume-minimum-abi3 ${{ python_min }}
+        else: abi3audit %SP_DIR%/spam.pyd -s -v --assume-minimum-abi3 ${{ python_min }}
 
 about:
   summary: ABI3 example
