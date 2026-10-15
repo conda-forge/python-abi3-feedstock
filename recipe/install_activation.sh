@@ -3,5 +3,5 @@
 for CHANGE in "activate" "deactivate"
 do
     mkdir -p "${PREFIX}/etc/conda/${CHANGE}.d"
-    sed "s/@PY_LIMITED_API@/${PY_LIMITED_API}/g" "${RECIPE_DIR}/scripts/${CHANGE}.sh" >> "${PREFIX}/etc/conda/${CHANGE}.d/${PKG_NAME}_${CHANGE}.sh"
+    sed "s/@ABI_MACRO_VALUE@/${ABI_MACRO_VALUE}/g;s/@ABI_MACRO_NAME@/${ABI_MACRO_NAME}/g" "${RECIPE_DIR}/scripts/${CHANGE}.sh" >> "${PREFIX}/etc/conda/${CHANGE}.d/${PKG_NAME}_${CHANGE}.sh"
 done

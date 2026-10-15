@@ -13,6 +13,8 @@ python-abi3 package can be used for supporting ABI3 packages on
 conda-forge. ABI3 supports building a C extension for one specific
 CPython version and make it work on any later version.
 (freethreading is not supported)
+python-abi3t can be used for building abi3t (PEP 803) packages
+which work on both GIL and freethreading CPython 3.15 and later.
 
 
 Current build status
@@ -35,7 +37,9 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-__python__abi3__support-green.svg)](https://anaconda.org/conda-forge/_python_abi3_support) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/_python_abi3_support.svg)](https://anaconda.org/conda-forge/_python_abi3_support) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/_python_abi3_support.svg)](https://anaconda.org/conda-forge/_python_abi3_support) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/_python_abi3_support.svg)](https://anaconda.org/conda-forge/_python_abi3_support) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-__python__abi3t__support-green.svg)](https://anaconda.org/conda-forge/_python_abi3t_support) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/_python_abi3t_support.svg)](https://anaconda.org/conda-forge/_python_abi3t_support) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/_python_abi3t_support.svg)](https://anaconda.org/conda-forge/_python_abi3t_support) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/_python_abi3t_support.svg)](https://anaconda.org/conda-forge/_python_abi3t_support) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-python--abi3-green.svg)](https://anaconda.org/conda-forge/python-abi3) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/python-abi3.svg)](https://anaconda.org/conda-forge/python-abi3) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/python-abi3.svg)](https://anaconda.org/conda-forge/python-abi3) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/python-abi3.svg)](https://anaconda.org/conda-forge/python-abi3) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-python--abi3t-green.svg)](https://anaconda.org/conda-forge/python-abi3t) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/python-abi3t.svg)](https://anaconda.org/conda-forge/python-abi3t) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/python-abi3t.svg)](https://anaconda.org/conda-forge/python-abi3t) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/python-abi3t.svg)](https://anaconda.org/conda-forge/python-abi3t) |
 
 Installing python-abi3
 ======================
@@ -54,7 +58,7 @@ How to use
 <summary>With conda</summary>
 
 ```
-conda install _python_abi3_support python-abi3
+conda install _python_abi3_support _python_abi3t_support python-abi3 python-abi3t
 ```
 
 </details>
@@ -63,7 +67,7 @@ conda install _python_abi3_support python-abi3
 <summary>With mamba</summary>
 
 ```
-mamba install _python_abi3_support python-abi3
+mamba install _python_abi3_support _python_abi3t_support python-abi3 python-abi3t
 ```
 
 </details>
@@ -73,9 +77,9 @@ mamba install _python_abi3_support python-abi3
 
 ```
 # for adding to your local project
-pixi add _python_abi3_support python-abi3
+pixi add _python_abi3_support _python_abi3t_support python-abi3 python-abi3t
 # for installing globally
-pixi global install _python_abi3_support python-abi3
+pixi global install _python_abi3_support _python_abi3t_support python-abi3 python-abi3t
 ```
 
 </details>
