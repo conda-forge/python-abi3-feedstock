@@ -4,8 +4,3 @@ channel_targets:
 - conda-forge main
 version:
 - '3.15'
-version_hex:
-- '0x030f0000'
-zip_keys:
-- - version
-  - version_hex

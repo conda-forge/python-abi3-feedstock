@@ -1,23 +1,31 @@
 {% if version is not defined %}
 {% set version = "3.9" %}
 {% endif %}
+{% set py_major = version.split(".")[0] | int %}
+{% set py_minor = version.split(".")[1] | int %}
+{% set limited_api_hex = "0x%02x%02x0000" | format(py_major, py_minor) %}
+# abi3t (PEP 803) is only available in CPython 3.15+
+{% set has_abi3t = (py_major, py_minor) >= (3, 15) %}
 
 package:
   name: python-abi3-split
   version: "{{ version }}"
 
 build:
-  number: 3
+  number: 4
 
 outputs:
   - name: python-abi3
+    script: install_activation.sh   # [unix]
+    script: install_activation.bat  # [win]
     build:
       noarch: generic
       run_exports:
         - _python_abi3_support 1.*
         - cpython >={{ version }}
       script_env:
-        - PY_LIMITED_API={{ version_hex }}
+        - ABI_MACRO_VALUE={{ limited_api_hex }}
+        - ABI_MACRO_NAME=Py_LIMITED_API
     requirements:
       build:
         - sed      # [unix]
@@ -44,6 +52,45 @@ outputs:
       commands:
         - echo "hello world!"
 
+  # abi3t (PEP 803): stable ABI usable by both GIL and free-threaded builds.
+  - name: python-abi3t
+    script: install_activation.sh   # [unix]
+    script: install_activation.bat  # [win]
+    build:
+      noarch: generic
+      skip: {{ not has_abi3t }}
+      run_exports:
+        - _python_abi3t_support 1.*
+        - cpython >={{ version }}
+      script_env:
+        - ABI_MACRO_VALUE={{ limited_api_hex }}
+        - ABI_MACRO_NAME=Py_TARGET_ABI3T
+    requirements:
+      build:
+        - sed      # [unix]
+        - m2-sed   # [win]
+      host:
+      run:
+        - python {{ version }}
+        - _python_abi3t_support
+        - __unix   # [unix]
+        - __win    # [win]
+    test:
+      commands:
+        - echo "hello world!"
+
+  - name: _python_abi3t_support
+    version: "1.0"
+    build:
+      noarch: generic
+      skip: {{ not has_abi3t }}
+    requirements:
+      run:
+        - cpython
+    test:
+      commands:
+        - echo "hello world!"
+
 about:
   home: https://github.com/conda-forge/python-abi3-feedstock
   summary: 'Support Python ABI3 packages on conda'
@@ -52,6 +99,8 @@ about:
     conda-forge. ABI3 supports building a C extension for one specific
     CPython version and make it work on any later version.
     (freethreading is not supported)
+    python-abi3t can be used for building abi3t (PEP 803) packages
+    which work on both GIL and freethreading CPython 3.15 and later.
   license: MIT
   license_file: LICENSE.txt
 
