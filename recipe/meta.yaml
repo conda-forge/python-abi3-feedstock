@@ -18,6 +18,7 @@ outputs:
         - cpython >={{ version }}
       script_env:
         - PY_LIMITED_API={{ version_hex }}
+      skip: true   # [version == "3.15"]
     requirements:
       build:
         - sed      # [unix]
