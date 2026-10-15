@@ -5,6 +5,7 @@ version:
 - "3.12"
 - "3.13"
 - "3.14"
+- "3.15"
 version_hex:
 - "0x03090000"
 - "0x030a0000"
@@ -12,6 +13,7 @@ version_hex:
 - "0x030c0000"
 - "0x030d0000"
 - "0x030e0000"
+- "0x030f0000"
 zip_keys:
 - - version
   - version_hex
